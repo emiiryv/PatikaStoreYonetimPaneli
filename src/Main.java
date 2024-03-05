@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -15,10 +17,19 @@ public class Main {
 
         PhoneList pliste = new PhoneList();
         pliste.addPhone(1,1000,10,25,"Samsung Galaxy s3",liste.getBrandByID(8),128,6,4000,8,"Black");
-    Panel panel= new Panel();
-    panel.setBrandsList(liste);
-    panel.setPhoneList(pliste);
-    panel.start();
+
+        NotebookList notebookList  = new NotebookList();
+        notebookList.addNotebook(1,20000,5,13,"Macbook Air",liste.getBrandByID(1),16,512,14);
+
+        ArrayList<Notebook> notebooks = new ArrayList<>();
+
+
+        NotebookManager notebookManager = new NotebookManager(liste);
+        notebookManager.printNotebooks(notebooks);
+        Panel panel = new Panel(liste, pliste, notebookList, notebookManager, new Scanner(System.in),notebooks);
+        panel.setBrandsList(liste);
+        panel.setPhoneList(pliste);
+        panel.start();
 
     }
 }
