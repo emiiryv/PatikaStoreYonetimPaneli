@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NotebookManager {
-    private BrandsList liste; // NotebookManager sınıfının bir BrandsList nesnesi olmalı
+    private BrandsList liste;
+    private NotebookList notebookList; // NotebookList nesnesi
 
-    public NotebookManager(BrandsList liste) {
+    public NotebookManager(BrandsList liste, NotebookList notebookList) {
         this.liste = liste;
+        this.notebookList = notebookList; // Constructor'da NotebookList nesnesinin oluşturulması
     }
 
     public void ekleNotebook() {
@@ -23,7 +25,6 @@ public class NotebookManager {
         String notebookName = girdi.nextLine();
         System.out.println("Markası(ID):");
 
-        // Marka seçimi
         int secim = girdi.nextInt();
         Brands selectedBrand = liste.getBrandByID(secim);
         if (selectedBrand == null) {
@@ -40,10 +41,14 @@ public class NotebookManager {
 
         // Notebook oluşturma
         Notebook yeniNotebook = new Notebook(id, price, discountRate, stockAmount, notebookName, selectedBrand, RAM, notebookSSD, notebookScreen);
-        // Notebook'u listenize ekleme işlemi burada yapılabilir
+
+        // Notebook'u NotebookList'e ekleme işlemi
+        notebookList.addNotebook(yeniNotebook);
     }
 
-    public void printNotebooks(ArrayList<Notebook> notebooks) {
+
+    public void printNotebooks() {
+        ArrayList<Notebook> notebooks = notebookList.getNotebooks();
         System.out.println("Eklenen Notebooklar:");
         for (Notebook notebook : notebooks) {
             System.out.println("-" + notebook.getNotebookName());
@@ -51,4 +56,5 @@ public class NotebookManager {
             // Diğer notebook özelliklerini burada yazdırabilirsiniz
         }
     }
+
 }

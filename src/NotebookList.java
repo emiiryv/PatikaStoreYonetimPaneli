@@ -19,21 +19,12 @@ public class NotebookList {
         }
     }
 
-    public void ekleAyakkabi(){
-        Scanner girdi = new Scanner(System.in);
-        System.out.println("ID:");
-        int id = girdi.nextInt();
-        System.out.println("Fiyatı:");
-        int price = girdi.nextInt();
-        System.out.println("Indirim oranı:");
-        int discountRate = girdi.nextInt();
-        System.out.println("Stok durumu");
-        int stockAmount = girdi.nextInt();
-        System.out.println("Ismi:");
-        String notebookName = girdi.nextLine();
-        System.out.println("Markası(ID):");
 
-
+    public void addNotebook(Notebook notebook) {
+        notebooks.add(notebook);
     }
 
+    public ArrayList<Notebook> getNotebooks() {
+        return notebooks;
+    }
 }
