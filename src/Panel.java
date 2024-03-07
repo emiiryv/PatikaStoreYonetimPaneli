@@ -7,13 +7,15 @@ public class Panel {
     private NotebookList notebookList;
     private NotebookManager notebookManager;
     private Scanner input;
+    private PhoneManager phoneManager;
 
-    public Panel(BrandsList liste, PhoneList pliste, NotebookList notebookList, NotebookManager notebookManager, Scanner input) {
+    public Panel(BrandsList liste, PhoneList pliste, NotebookList notebookList, NotebookManager notebookManager, Scanner input,PhoneManager phoneManager) {
         this.liste = liste;
         this.pliste = pliste;
         this.notebookList = notebookList;
         this.notebookManager = notebookManager;
         this.input = input;
+        this.phoneManager = phoneManager;
     }
 
     public void start(){
@@ -22,6 +24,7 @@ public class Panel {
 
         int secim;
         int secim2;
+        int secim3;
         do {
             System.out.println("Yapmak istediğiniz işlemi seçiniz:");
 
@@ -54,8 +57,20 @@ public class Panel {
                     }
                     break;
                 case 2:
-                    System.out.println("Deneme");
-                    pliste.printPhone();
+                    System.out.println("Lütfen yapmak istediğiniz işlemi seçiniz");
+                    System.out.println("1-Telefon Listele");
+                    System.out.println("2-Telefon Ekle");
+                    System.out.print("Tercihiniz:");
+                    secim3 = input.nextInt();
+                    if (secim3 == 1){
+                        pliste.printPhone();
+                        phoneManager.printPhones();
+                    } else if (secim3 == 2) {
+                        System.out.println("Lütfen eklemek istediğiniz ürünün özelliklerini giriniz:");
+                        phoneManager.eklePhone();
+                    } else {
+                        System.out.println("Geçerli bir değer giriniz.");
+                    }
                     break;
                 case 3:
                     System.out.println("Markalarımız");

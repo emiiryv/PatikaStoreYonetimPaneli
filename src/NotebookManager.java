@@ -56,5 +56,4 @@ public class NotebookManager {
             // Diğer notebook özelliklerini burada yazdırabilirsiniz
         }
     }
-
 }

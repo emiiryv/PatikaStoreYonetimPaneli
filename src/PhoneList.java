@@ -11,9 +11,20 @@ public class PhoneList {
         Phone phone = new Phone(phoneID, price, discountRate, stockAmount, phoneName, liste, phoneMemory, phoneScreen, phoneBattery, phoneRam, phoneColor);
         phones.add(phone);
     }
+
     public void printPhone() {
-        for (Phone phones : phones) {
-            System.out.println("-" + phones.getPhoneName());
+        for (Phone phone : phones) {
+            System.out.println("-" + phone.getPhoneName());
         }
+    }
+
+    public void addPhone(Phone yeniPhone) {
+        if (!phones.contains(yeniPhone)) {
+            phones.add(yeniPhone);
+        }
+    }
+
+    public ArrayList<Phone> getPhones() {
+        return phones;
     }
 }
