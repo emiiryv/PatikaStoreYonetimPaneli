@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class NotebookManager {
     private BrandsList liste;
     private NotebookList notebookList; // NotebookList nesnesi
+    private int findNBid;
+    private String arama;
 
     public NotebookManager(BrandsList liste, NotebookList notebookList) {
         this.liste = liste;
@@ -12,18 +14,18 @@ public class NotebookManager {
 
     public void ekleNotebook() {
         Scanner girdi = new Scanner(System.in);
-        System.out.println("ID:");
+        System.out.print("ID:");
         int id = girdi.nextInt();
-        System.out.println("Fiyatı:");
+        System.out.print("Fiyatı:");
         int price = girdi.nextInt();
-        System.out.println("Indirim oranı:");
+        System.out.print("Indirim oranı:");
         int discountRate = girdi.nextInt();
-        System.out.println("Stok durumu:");
+        System.out.print("Stok durumu:");
         int stockAmount = girdi.nextInt();
         girdi.nextLine(); // Bir sonraki satıra geçmek için
-        System.out.println("Ismi:");
+        System.out.print("Ismi:");
         String notebookName = girdi.nextLine();
-        System.out.println("Markası(ID):");
+        System.out.print("Markası(ID):");
 
         int secim = girdi.nextInt();
         Brands selectedBrand = liste.getBrandByID(secim);
@@ -32,11 +34,11 @@ public class NotebookManager {
             return;
         }
 
-        System.out.println("RAM:");
+        System.out.print("RAM:");
         int RAM = girdi.nextInt();
-        System.out.println("SSD:");
+        System.out.print("SSD:");
         int notebookSSD = girdi.nextInt();
-        System.out.println("Ekran:");
+        System.out.print("Ekran:");
         int notebookScreen = girdi.nextInt();
 
         // Notebook oluşturma
@@ -49,11 +51,34 @@ public class NotebookManager {
 
     public void printNotebooks() {
         ArrayList<Notebook> notebooks = notebookList.getNotebooks();
-        System.out.println("Eklenen Notebooklar:");
+        System.out.println("Fiyat ve ID ile birlikte:");
         for (Notebook notebook : notebooks) {
-            System.out.println("-" + notebook.getNotebookName());
+            System.out.println("-" + notebook.getNotebookName() + "(ID:" + notebook.getNotebookID() + ")");
             System.out.println("Fiyat: " + notebook.getPrice());
             // Diğer notebook özelliklerini burada yazdırabilirsiniz
         }
     }
+
+    public void findNotebookByID(int findNBid) {
+        ArrayList<Notebook> notebooks = notebookList.getNotebooks();
+        for (Notebook notebook : notebooks) {
+            if (findNBid == notebook.getNotebookID()) {
+                System.out.println("ID:" + notebook.getNotebookID() + " " + notebook.getNotebookName());
+            }
+        }
+    }
+
+    public void findNotebookByBrand(String arama) {
+        ArrayList<Notebook> notebooks = notebookList.getNotebooks();
+        Brands brand = liste.getBrandByName(arama);
+        for (Notebook notebook : notebooks) {
+            if (notebook.getliste().equals(brand)) {
+                System.out.println("ID:" + notebook.getNotebookID() + " " + notebook.getNotebookName());
+            }
+        }
+    }
+    public void deleteNotebookByID(int notebookID) {
+        notebookList.deleteNotebookByID(notebookID);
+    }
+
 }

@@ -27,4 +27,20 @@ public class PhoneList {
     public ArrayList<Phone> getPhones() {
         return phones;
     }
+    public void deletePhoneByID(int phoneID) {
+        Phone foundPhone = null;
+        for (Phone phone : phones) {
+            if (phone.getPhoneID() == phoneID) {
+                foundPhone = phone;
+                break;
+            }
+        }
+        if (foundPhone != null) {
+            phones.remove(foundPhone);
+            System.out.println("Telefon silindi: " + foundPhone.getPhoneName());
+        } else {
+            System.out.println("ID'si " + phoneID + " olan telefon bulunamadı.");
+        }
+    }
+
 }

@@ -18,12 +18,12 @@ public class Main {
         PhoneList pliste = new PhoneList();
         PhoneList phoneList = new PhoneList();
         pliste.addPhone(1, 1000, 10, 25, "Samsung Galaxy s3", liste.getBrandByID(8), 128, 6, 4000, 8, "Black");
-
-        PhoneManager phoneManager = new PhoneManager(liste,pliste);
+        pliste.addPhone(2,15000,5,10,"Xiaomi A5",liste.getBrandByID(9),32,6,3500,4,"White");
+        PhoneManager phoneManager = new PhoneManager(liste,pliste,liste);
 
         NotebookList notebookList = new NotebookList();
         notebookList.addNotebook(1, 20000, 5, 13, "Macbook Air", liste.getBrandByID(1), 16, 512, 14);
-
+        notebookList.addNotebook(4,140000,5,10,"Lenovo Ideapad",liste.getBrandByID(6),8,256,14);
         NotebookManager notebookManager = new NotebookManager(liste, notebookList);
 
         // notebooks listesine herhangi bir öğe eklemeye gerek yok

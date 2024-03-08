@@ -6,6 +6,7 @@ public class BrandsList {
     public BrandsList() {
         brands = new ArrayList<>();
     }
+    private String arama;
 
     // Marka ekleme metodu
     public void addBrand(int ID, String brandName) {
@@ -27,5 +28,14 @@ public class BrandsList {
         }
         return null; // Eğer belirtilen ID'ye sahip marka bulunamazsa null döner
     }
+    public Brands getBrandByName(String arama) {
+        for (Brands brand : brands){
+            if (brand.getBrandName().equals(arama)){
+                return brand;
+            }
+        }
+        return null;
+    }
+
 
 }

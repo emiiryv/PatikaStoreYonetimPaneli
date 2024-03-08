@@ -24,6 +24,19 @@ public class NotebookList {
             notebooks.add(notebook);
         }
     }
+    public void deleteNotebookByID(int notebookID) {
+        // Silinecek notebook'u bulmak için döngü
+        for (int i = 0; i < notebooks.size(); i++) {
+            Notebook notebook = notebooks.get(i);
+            if (notebook.getNotebookID() == notebookID) {
+                notebooks.remove(i); // Notebook'u listeden silme
+                System.out.println("Notebook ID'si " + notebookID + " olan notebook silindi.");
+                return; // Notebook bulundu ve silindi, döngüyü sonlandır
+            }
+        }
+        // Eğer belirtilen ID'ye sahip bir notebook bulunamazsa:
+        System.out.println("Notebook ID'si " + notebookID + " olan notebook bulunamadı.");
+    }
 
     public ArrayList<Notebook> getNotebooks() {
         return notebooks;
